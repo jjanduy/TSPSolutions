@@ -23,7 +23,7 @@ namespace TSPSolutions.Algorithms
 
 
             // Initialize population
-            Population pop = new Population(200, true);
+            Population pop = new Population(3, true);
             Console.WriteLine("Initial distance: " + pop.getFittest().getDistance());
 
             // Evolve population for 100 generations
@@ -42,7 +42,14 @@ namespace TSPSolutions.Algorithms
 
             int[] caminho = new int[cidades.Length + 1];
 
-            caminho[caminho.Length-1] = pop.getFittest().getDistance();
+            caminho[caminho.Length - 1] = pop.getFittest().getDistance();
+
+            List<int> per = pop.getFittest().getPercurso();
+
+            for (int i = 0; i < caminho.Length-1; i++)
+            {
+                caminho[i] = per[i];
+            }
 
             return caminho;
         }

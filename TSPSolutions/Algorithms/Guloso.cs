@@ -24,20 +24,14 @@ namespace TSPSolutions.Algorithms
 
             int percorrido = 0;
 
-            while (stack >= 0)
-            {
+            while (stack >= 0) {
                 element = stack;
                 i = 0;
                 min = int.MaxValue;
-
                 stack = -1;
-
-                while (i < numberOfNodes)
-                {
-                    if (adjacencyMatrix[element][i] > 0 && visited[i] == 0)
-                    {
-                        if (min > adjacencyMatrix[element][i])
-                        {
+                while (i < numberOfNodes) {
+                    if (adjacencyMatrix[element][i] > 0 && visited[i] == 0)  {
+                        if (min > adjacencyMatrix[element][i]) {
                             min = adjacencyMatrix[element][i];
                             dst = i;
                             minFlag = true;
@@ -45,24 +39,18 @@ namespace TSPSolutions.Algorithms
                     }
                     i++;
                 }
-                if (minFlag)
-                {
+                if (minFlag) {
                     visited[dst] = 1;
                     caminho[aux++] = dst;
                     stack = dst;
-                    //Console.Write(dst + "\t");
                     percorrido += min;
                     minFlag = false;
                     continue;
                 }
             }
-
             percorrido += adjacencyMatrix[element][inicio];
-
             caminho[aux++] = percorrido;
-
             return caminho;
         }
-
     }
 }

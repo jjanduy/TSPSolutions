@@ -87,25 +87,10 @@ namespace TSPSolutions.Algorithms.GA_TSP
             // Loop and add the sub tour from parent1 to our child
             for (int i = 0; i < child[0].tourSize(); i++)
             {
-                // If our start position is less than the end position
-                /*if (startPos < endPos && i > startPos && i < endPos)
-                {
-                    child.setCity(i, parent1.getCity(i));
-                } // If our start position is larger
-                else if (startPos > endPos)
-                {
-                    if (!(i < startPos && i > endPos))
-                    {
-                        child.setCity(i, parent1.getCity(i));
-                    }
-                }*/
-
                 if ( i > startPos && i < endPos)
                     child[0].setCity(i, parent1.getCity(i));
                 else
                     child[1].setCity(i, parent1.getCity(i));
-
-
             }
 
             // Loop through parent2's city tour

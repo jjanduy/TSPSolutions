@@ -23,6 +23,8 @@ namespace TSPSolutions.View
         public TSPSolutions()
         {
             InitializeComponent();
+            lDist.Text = "-";
+            label5.Text = "-";
 
             string[] lista = Directory.GetFiles("./data", "*.tsp");
 
@@ -53,12 +55,14 @@ namespace TSPSolutions.View
         {
             pictureBox1.Image = (Image)img.Clone();
 
+            int dim = cidades.Length > 50 ? 3 : 9;
+
             using (Graphics gp = Graphics.FromImage(pictureBox1.Image))
             {
                 var sBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 255));
                 for (int i = 0; i < cidades.Length; i++)
                 {
-                    gp.FillEllipse(sBrush, cidades[i].X - 1, cidades[i].Y - 1, 3, 3);
+                    gp.FillEllipse(sBrush, cidades[i].X - (dim/2), cidades[i].Y - (dim/2), dim, dim);
                 }
             }
         }
@@ -171,7 +175,11 @@ namespace TSPSolutions.View
                 caminho = Algorithms.GA.tsp(cidades, adjacencyMatrix, 0);
                 t_fim = DateTime.Now;
                 lDist.Text = caminho[caminho.Length - 1] + "";
+
+                timer1.Enabled = true;
+                timer1.Start();
             }
+            passoCaminho = 0;
 
             TimeSpan t_diferenca = t_fim.Subtract(t_inicio);
             label5.Text = t_diferenca.TotalSeconds.ToString("0.000000") + " segundos";
@@ -182,7 +190,10 @@ namespace TSPSolutions.View
         {
             timer1.Stop();
             desenhaCidades();
+            lDist.Text = "-";
+            label5.Text = "-";
 
+            passoCaminho = 0;
         }
     }
 }

@@ -124,6 +124,17 @@ namespace TSPSolutions.Algorithms.GA_TSP
             return tour.Contains(city);
         }
 
+        public List<int> getPercurso()
+        {
+            List<int> per = new List<int>();
+            foreach(City c in tour)
+            {
+                per.Add(c.getId());
+            }
+
+            return per;
+        }
+
         public String ToString()
         {
             String geneString = "|";

@@ -11,30 +11,22 @@ namespace TSPSolutions.Algorithms
     {
 
         static List<Cidade> cidades;
-        public static int[] tsp(int[][] adjacencyMatrix, int inicio)
-        {
+        public static int[] tsp(int[][] adjacencyMatrix, int inicio) {
             TSPInfo.adjacencyMatrix = adjacencyMatrix;
-
             cidades = new List<Cidade>();
-
             int numberOfNodes = adjacencyMatrix[1].Length;
             int[] visited = new int[numberOfNodes];
             int[] caminho = new int[numberOfNodes + 1];
-
             Cidade ini = new Cidade(visited, inicio, null);
             cidades.AddRange(ini.avancaCaminho());
-
             bool complete = false;
             int value = 0;
 
-            do
-            {
+            do {
                 int min = int.MaxValue;
-                for (int i = 0; i < cidades.Count; i++)
-                {
+                for (int i = 0; i < cidades.Count; i++) {
                     int custo = cidades[i].custo + adjacencyMatrix[inicio][cidades[i].id];
-                    if (min > custo)
-                    {
+                    if (min > custo) {
                         value = i;
                         min = custo;
                     }
@@ -42,12 +34,9 @@ namespace TSPSolutions.Algorithms
 
                 List<Cidade> filhas = cidades[value].avancaCaminho();
 
-                if (filhas.Count == 0)
-                {
+                if (filhas.Count == 0) {
                     complete = true;
-                }
-                else
-                {
+                } else {
                     cidades.RemoveAt(value);
                     cidades.AddRange(filhas);
                 }
