@@ -138,7 +138,7 @@ namespace TSPSolutions.View
             if (comboBox2.SelectedIndex == 0)
             {
                 t_inicio = DateTime.Now;
-                caminho = Algorithms.BuscaProfundidade.tsp(adjacencyMatrix, 0);
+                caminho = Algorithms.DepthFirstSearch.tsp(adjacencyMatrix, 0);
                 t_fim = DateTime.Now;
                 lDist.Text = caminho[caminho.Length - 1] + "";
 
@@ -150,7 +150,7 @@ namespace TSPSolutions.View
                 //caminho = Algorithms.GA.tsp(cidades, adjacencyMatrix, 0);
                 t_inicio = DateTime.Now;
 
-                caminho = Algorithms.Guloso.tsp(adjacencyMatrix, 0);
+                caminho = Algorithms.GreedyAlgorithm.tsp(adjacencyMatrix, 0);
                 t_fim = DateTime.Now;
 
                 lDist.Text = caminho[caminho.Length - 1] + "";
@@ -173,6 +173,16 @@ namespace TSPSolutions.View
             {
                 t_inicio = DateTime.Now;
                 caminho = Algorithms.GA.tsp(cidades, adjacencyMatrix, 0);
+                t_fim = DateTime.Now;
+                lDist.Text = caminho[caminho.Length - 1] + "";
+
+                timer1.Enabled = true;
+                timer1.Start();
+            }
+            else if (comboBox2.SelectedIndex == 4)
+            {
+                t_inicio = DateTime.Now;
+                caminho = Algorithms.Swarm.AntColonyOptimization.tsp(adjacencyMatrix);
                 t_fim = DateTime.Now;
                 lDist.Text = caminho[caminho.Length - 1] + "";
 

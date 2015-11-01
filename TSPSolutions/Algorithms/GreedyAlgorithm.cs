@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TSPSolutions.Algorithms
 {
-    class Guloso
+    class GreedyAlgorithm
     {
         public static int[] tsp(int[][] adjacencyMatrix, int inicio)
         {

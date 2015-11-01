@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TSPSolutions.Algorithms
 {
-    class BuscaProfundidade
+    class DepthFirstSearch
     {
         static int[] visited;
         static int raiz;
@@ -22,7 +22,7 @@ namespace TSPSolutions.Algorithms
 
         public static int[] tsp(int[][] adjacencyMatrix, int inicio)
         {
-            BuscaProfundidade.adjacencyMatrix = adjacencyMatrix;
+            DepthFirstSearch.adjacencyMatrix = adjacencyMatrix;
             numberOfNodes = adjacencyMatrix[1].Length;
             visited = new int[numberOfNodes];
             caminho = new int[numberOfNodes + 1];
